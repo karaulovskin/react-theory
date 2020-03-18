@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import Track from "./Track/Track";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
-  );
+class App extends Component {
+    render() {
+        const divStyle = {
+            textAlign: 'center'
+        }
+
+        return (
+            <div style={divStyle}>
+                <h1>React</h1>
+                <Track />
+            </div>
+        );
+    }
 }
 
 export default App;
