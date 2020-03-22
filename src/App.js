@@ -10,18 +10,23 @@ class App extends Component {
             {performer:'Tale of Us', name:'Track_2'}
         ],
         pageTitle: 'React components'
-    };
+    }
+
+    changeTitleHandler = () => {
+        console.log('click');
+    }
 
     render() {
         const divStyle = {
             textAlign: 'center'
-        };
+        }
 
         const tracks = this.state.tracks;
 
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
+                <button onClick={this.changeTitleHandler}>Change title</button>
                 <Track performer={tracks[0].performer} name={tracks[0].name} />
                 <Track performer={tracks[1].performer} name={tracks[1].name} />
                 <Track performer={tracks[2].performer} name={tracks[2].name} />
