@@ -19,9 +19,10 @@ import React from "react";
 //     </div>
 // )
 
-export default () => (
+export default props => (
     <div>
-        This is track component
-        <strong> number 1</strong>
+        <h3>{ props.performer }</h3>
+        <p><strong>{ props.name }</strong></p>
+        { props.children }
     </div>
 )
