@@ -23,6 +23,6 @@ export default props => (
     <div>
         <h3>{ props.performer }</h3>
         <p><strong>{ props.name }</strong></p>
-        { props.children }
+        <button onClick={props.onChangeTitle}>Click</button>
     </div>
 )
