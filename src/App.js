@@ -29,8 +29,6 @@ class App extends Component {
             textAlign: 'center'
         }
 
-        const tracks = this.state.tracks;
-
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
@@ -40,21 +38,18 @@ class App extends Component {
                 <button
                     onClick={this.changeTitleHandler.bind(this, 'Changed!')}
                 >Change title</button>
-                <Track
-                    performer={tracks[0].performer}
-                    name={tracks[0].name}
-                    onChangeTitle={this.changeTitleHandler.bind(this, tracks[0].performer)}
-                />
-                <Track
-                    performer={tracks[1].performer}
-                    name={tracks[1].name}
-                    onChangeTitle={() => this.changeTitleHandler(tracks[1].performer)}
-                />
-                <Track
-                    performer={tracks[2].performer}
-                    name={tracks[2].name}
-                    onChangeTitle={this.changeTitleHandler.bind(this, tracks[2].performer)}
-                />
+
+                { this.state.tracks.map((track, index) => {
+                    return(
+                        <Track
+                            key={index}
+                            performer={track.performer}
+                            name={track.name}
+                            onChangeTitle={() => this.changeTitleHandler(track.performer)}
+                        />
+                    )
+
+                }) }
             </div>
         );
     }
