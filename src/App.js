@@ -30,6 +30,21 @@ class App extends Component {
             textAlign: 'center'
         }
 
+        let tracks = null
+
+        if (this.state.showTracks) {
+            tracks = this.state.tracks.map((track, index) => {
+                return(
+                    <Track
+                        key={index}
+                        performer={track.performer}
+                        name={track.name}
+                        onChangeTitle={() => this.changeTitleHandler(track.performer)}
+                    />
+                )
+            })
+        }
+
         return (
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
@@ -38,20 +53,7 @@ class App extends Component {
                     onClick={this.toggleTrackHandler}
                 >Toggle tracks</button>
 
-                {
-                    this.state.showTracks
-                    ?   this.state.tracks.map((track, index) => {
-                            return(
-                                <Track
-                                    key={index}
-                                    performer={track.performer}
-                                    name={track.name}
-                                    onChangeTitle={() => this.changeTitleHandler(track.performer)}
-                                />
-                            )
-                        })
-                    : null
-                }
+                { tracks }
             </div>
         );
     }
