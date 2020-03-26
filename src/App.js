@@ -9,18 +9,19 @@ class App extends Component {
             {performer:'Tale of Us', name:'Track_1'},
             {performer:'Tale of Us', name:'Track_2'}
         ],
-        pageTitle: 'React components'
+        pageTitle: 'React components',
+        showTracks: false
     }
 
-    changeTitleHandler = (newTitle) => {
+    toggleTrackHandler = () => {
         this.setState({
-            pageTitle: newTitle
+            showTracks: !this.state.showTracks
         })
     }
 
-    handleInput = (event) => {
+    changeTitleHandler = pageTitle => {
         this.setState({
-            pageTitle: event.target.value
+            pageTitle
         })
     }
 
@@ -33,23 +34,24 @@ class App extends Component {
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
 
-                <input type="text" onChange={this.handleInput}/>
-
                 <button
-                    onClick={this.changeTitleHandler.bind(this, 'Changed!')}
-                >Change title</button>
+                    onClick={this.toggleTrackHandler}
+                >Toggle tracks</button>
 
-                { this.state.tracks.map((track, index) => {
-                    return(
-                        <Track
-                            key={index}
-                            performer={track.performer}
-                            name={track.name}
-                            onChangeTitle={() => this.changeTitleHandler(track.performer)}
-                        />
-                    )
-
-                }) }
+                {
+                    this.state.showTracks
+                    ?   this.state.tracks.map((track, index) => {
+                            return(
+                                <Track
+                                    key={index}
+                                    performer={track.performer}
+                                    name={track.name}
+                                    onChangeTitle={() => this.changeTitleHandler(track.performer)}
+                                />
+                            )
+                        })
+                    : null
+                }
             </div>
         );
     }
