@@ -1,28 +1,14 @@
 import React from "react";
 
-// function Track() {
-//     return (
-//         <div>This is track component</div>
-//     )
-// }
-
-// const track = () => {
-//     return (
-//         <div>This is track component</div>
-//     )
-// }
-
-// const track = () => (
-//     <div>
-//         This is track component
-//         <strong> number 1</strong>
-//     </div>
-// )
-
 export default props => (
-    <div>
+    <div style={{
+        marginBottom: '10px',
+        paddingBottom: '20px',
+        border: '1px solid #ccc'
+    }}>
         <h3>{ props.performer }</h3>
         <p><strong>{ props.name }</strong></p>
-        <button onClick={props.onChangeTitle}>Click</button>
+        <input type="text" onChange={props.onChangeName} value={props.name} />
+        <button onClick={props.onDelet}>Delet</button>
     </div>
 )

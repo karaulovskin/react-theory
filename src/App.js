@@ -19,10 +19,25 @@ class App extends Component {
         })
     }
 
-    changeTitleHandler = pageTitle => {
+    onChangeName(name, index) {
+        const track = this.state.tracks[index]
+        track.name = name
+        const tracks = [...this.state.tracks]
+        tracks[index] = track
+
+        // короткая запись
+        // this.setState({tracks})
+
         this.setState({
-            pageTitle
+            tracks: tracks
         })
+    }
+
+    deleteHandler(index) {
+        const tracks = this.state.tracks.concat()
+        tracks.splice(index, 1)
+
+        this.setState({tracks})
     }
 
     render() {
@@ -39,7 +54,8 @@ class App extends Component {
                         key={index}
                         performer={track.performer}
                         name={track.name}
-                        onChangeTitle={() => this.changeTitleHandler(track.performer)}
+                        onDelet={this.deleteHandler.bind(this, index)}
+                        onChangeName={(event) => this.onChangeName(event.target.value, index)}
                     />
                 )
             })
