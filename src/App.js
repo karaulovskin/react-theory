@@ -68,8 +68,15 @@ class App extends Component {
                 <button
                     onClick={this.toggleTrackHandler}
                 >Toggle tracks</button>
-
-                { tracks }
+                <div
+                    style={{
+                        width: 400,
+                        margin: 'auto',
+                        padding: '20px'
+                    }}
+                >
+                    { tracks }
+                </div>
             </div>
         );
     }
