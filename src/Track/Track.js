@@ -1,7 +1,8 @@
 import React from "react";
+import Radium from "radium";
 import './Track.css'
 
-export default props => {
+const Track = props => {
     const inputClasses = ['input']
 
     if (props.name !== '') {
@@ -15,8 +16,17 @@ export default props => {
         inputClasses.push('bold')
     }
 
+    const style = {
+        border: '1px solid #ccc',
+        boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .15)',
+        ':hover': {
+            border: '1px solid #ccc',
+            boxShadow: '0 4px 14px 0 rgba(0, 0, 0, .25)',
+        }
+    }
+
     return (
-        <div className="Track">
+        <div className="Track" style={ style }>
             <h3>{ props.performer }</h3>
             <p><strong>{ props.name }</strong></p>
             <input
@@ -29,3 +39,5 @@ export default props => {
         </div>
     )
 }
+
+export default Radium(Track)

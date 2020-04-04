@@ -1,9 +1,8 @@
 .Track {
     margin-bottom: 10px;
     padding-bottom: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .2);
     border-radius: 1px;
+    transition: border, box-shadow .3s;
 }
 .input {}
 .input:focus {
