@@ -1,6 +1,6 @@
 import React from "react";
 import Radium from "radium";
-import './Track.css'
+import './Track.scss'
 
 const Track = props => {
     const inputClasses = ['input']

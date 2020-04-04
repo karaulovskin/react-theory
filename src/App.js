@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Track from "./Track/Track";
 
 class App extends Component {
