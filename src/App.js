@@ -54,7 +54,7 @@ class App extends Component {
                         key={index}
                         performer={track.performer}
                         name={track.name}
-                        onDelet={this.deleteHandler.bind(this, index)}
+                        onDelete={this.deleteHandler.bind(this, index)}
                         onChangeName={(event) => this.onChangeName(event.target.value, index)}
                     />
                 )
