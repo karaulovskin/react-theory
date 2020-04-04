@@ -1,20 +1,8 @@
 import React from "react";
 import Radium from "radium";
-import './Track.scss'
+import classes from './Track.module.scss'
 
 const Track = props => {
-    const inputClasses = ['input']
-
-    if (props.name !== '') {
-        inputClasses.push('green')
-    }
-    else {
-        inputClasses.push('red')
-    }
-
-    if (props.name.length > 4) {
-        inputClasses.push('bold')
-    }
 
     const style = {
         border: '1px solid #ccc',
@@ -26,14 +14,13 @@ const Track = props => {
     }
 
     return (
-        <div className="Track" style={ style }>
+        <div className={ classes.Track } style={ style }>
             <h3>{ props.performer }</h3>
             <p><strong>{ props.name }</strong></p>
             <input
                 type="text"
                 onChange={ props.onChangeName }
                 value={ props.name }
-                className={ inputClasses.join(' ') }
             />
             <button onClick={ props.onDelete }>Delete</button>
         </div>
