@@ -3,14 +3,18 @@ import './App.scss';
 import Track from "./Track/Track";
 
 class App extends Component {
-    state = {
-        tracks: [
-            {performer:'Mind Against', name:'Track_1'},
-            {performer:'Tale of Us', name:'Track_1'},
-            {performer:'Tale of Us', name:'Track_2'}
-        ],
-        pageTitle: 'React components',
-        showTracks: false
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            tracks: [
+                {performer:'Mind Against', name:'Track_1'},
+                {performer:'Tale of Us', name:'Track_1'},
+                {performer:'Tale of Us', name:'Track_2'}
+            ],
+            pageTitle: 'React components',
+            showTracks: false
+        }
     }
 
     toggleTrackHandler = () => {
