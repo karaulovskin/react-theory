@@ -21,6 +21,10 @@ class Track extends React.Component {
         console.log('Track componentDidUpdate')
     }
 
+    componentWillUnmount() {
+        console.log('Track componentWillUnmount')
+    }
+
     render() {
         console.log('Track render')
 
