@@ -1,9 +1,29 @@
 import React from "react";
-import Radium from "radium";
+// import Radium from "radium";
 import classes from './Track.module.scss'
 
 class Track extends React.Component {
+
+    componentWillReceiveProps(nextProps) {
+        console.log('Track componentWillReceiveProps', nextProps)
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('Track shouldComponentUpdate', nextProps, nextState, nextContext)
+        return nextProps.name.trim() !== this.props.name.trim()
+    }
+
+    componentWillUpdate(nextProps, nextState, nextContext) {
+        console.log('Track componentWillUpdate', nextProps, nextState, nextContext)
+    }
+
+    componentDidUpdate() {
+        console.log('Track componentDidUpdate')
+    }
+
     render() {
+        console.log('Track render')
+
         const style = {
             border: '1px solid #ccc',
             boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .15)',
@@ -28,4 +48,4 @@ class Track extends React.Component {
     }
 }
 
-export default Radium(Track)
+export default Track

@@ -4,15 +4,13 @@ import Track from "./Track/Track";
 
 class App extends Component {
     constructor(props) {
-        console.log('App constructor')
-
         super(props)
 
         this.state = {
             tracks: [
                 {performer:'Mind Against', name:'Track_1'},
-                {performer:'Tale of Us', name:'Track_1'},
-                {performer:'Tale of Us', name:'Track_2'}
+                // {performer:'Tale of Us', name:'Track_1'},
+                // {performer:'Tale of Us', name:'Track_2'}
             ],
             pageTitle: 'React components',
             showTracks: false
