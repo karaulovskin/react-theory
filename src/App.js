@@ -4,6 +4,8 @@ import Track from "./Track/Track";
 
 class App extends Component {
     constructor(props) {
+        console.log('App constructor')
+
         super(props)
 
         this.state = {
@@ -44,7 +46,17 @@ class App extends Component {
         this.setState({tracks})
     }
 
+    componentWillMount() {
+        console.log('App componentWillMount')
+    }
+
+    componentDidMount() {
+        console.log('App componentDidMount')
+    }
+
     render() {
+        console.log('App render')
+
         const divStyle = {
             textAlign: 'center'
         }
