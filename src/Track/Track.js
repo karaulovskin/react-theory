@@ -8,17 +8,27 @@ class Track extends React.Component {
         console.log('Track componentWillReceiveProps', nextProps)
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log('Track shouldComponentUpdate', nextProps, nextState, nextContext)
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Track shouldComponentUpdate', nextProps, nextState)
         return nextProps.name.trim() !== this.props.name.trim()
     }
 
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        console.log('Track componentWillUpdate', nextProps, nextState, nextContext)
+    componentWillUpdate(nextProps, nextState) {
+        console.log('Track componentWillUpdate', nextProps, nextState)
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('Track getDerivedStateFromProps', nextProps, prevState)
+
+        return prevState
     }
 
     componentDidUpdate() {
         console.log('Track componentDidUpdate')
+    }
+
+    getSnapshotBeforeUpdate() {
+        console.log('Track getSnapshotBeforeUpdate')
     }
 
     componentWillUnmount() {
