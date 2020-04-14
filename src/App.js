@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Track from "./Track/Track";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class App extends Component {
         this.state = {
             tracks: [
                 {performer:'Mind Against', name:'Track_1'},
-                // {performer:'Tale of Us', name:'Track_1'},
-                // {performer:'Tale of Us', name:'Track_2'}
+                {performer:'Tale of Us', name:'Track_1'},
+                {performer:'Tale of Us', name:'Track_2'}
             ],
             pageTitle: 'React components',
             showTracks: false
@@ -64,13 +65,14 @@ class App extends Component {
         if (this.state.showTracks) {
             tracks = this.state.tracks.map((track, index) => {
                 return(
-                    <Track
-                        key={index}
-                        performer={track.performer}
-                        name={track.name}
-                        onDelete={this.deleteHandler.bind(this, index)}
-                        onChangeName={(event) => this.onChangeName(event.target.value, index)}
-                    />
+                    <ErrorBoundary key={index}>
+                        <Track
+                            performer={track.performer}
+                            name={track.name}
+                            onDelete={this.deleteHandler.bind(this, index)}
+                            onChangeName={(event) => this.onChangeName(event.target.value, index)}
+                        />
+                    </ErrorBoundary>
                 )
             })
         }

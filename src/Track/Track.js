@@ -17,11 +17,11 @@ class Track extends React.Component {
         console.log('Track componentWillUpdate', nextProps, nextState)
     }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('Track getDerivedStateFromProps', nextProps, prevState)
-
-        return prevState
-    }
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log('Track getDerivedStateFromProps', nextProps, prevState)
+    //
+    //     return prevState
+    // }
 
     componentDidUpdate() {
         console.log('Track componentDidUpdate')
@@ -37,6 +37,10 @@ class Track extends React.Component {
 
     render() {
         console.log('Track render')
+
+        if (Math.random() > 0.7) {
+            throw new Error('Track random failed')
+        }
 
         const style = {
             border: '1px solid #ccc',
