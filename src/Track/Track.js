@@ -38,9 +38,9 @@ class Track extends React.Component {
     render() {
         console.log('Track render')
 
-        if (Math.random() > 0.7) {
-            throw new Error('Track random failed')
-        }
+        // if (Math.random() > 0.7) {
+        //     throw new Error('Track random failed')
+        // }
 
         const style = {
             border: '1px solid #ccc',

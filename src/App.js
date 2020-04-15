@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Track from "./Track/Track";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Counter from "./Counter/Counter";
 
 class App extends Component {
     constructor(props) {
@@ -10,8 +11,8 @@ class App extends Component {
         this.state = {
             tracks: [
                 {performer:'Mind Against', name:'Track_1'},
-                {performer:'Tale of Us', name:'Track_1'},
-                {performer:'Tale of Us', name:'Track_2'}
+                // {performer:'Tale of Us', name:'Track_1'},
+                // {performer:'Tale of Us', name:'Track_2'}
             ],
             pageTitle: 'React components',
             showTracks: false
@@ -82,7 +83,12 @@ class App extends Component {
                 {/*<h1>{this.state.pageTitle}</h1>*/}
                 <h1>{ this.props.title }</h1>
 
+                <Counter />
+
+                <hr/>
+
                 <button
+                    style={{ marginTop: 20 }}
                     onClick={ this.toggleTrackHandler }
                 >Toggle tracks</button>
                 <div
