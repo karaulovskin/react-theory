@@ -4,11 +4,14 @@ import Track from "./Track/Track";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import Counter from "./Counter/Counter";
 
+export const ClickedContext = React.createContext(false)
+
 class App extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            clicked: false,
             tracks: [
                 {performer:'Mind Against', name: 'Track 1'},
                 {performer:'Tale of Us', name: 'Track 1'},
@@ -84,7 +87,9 @@ class App extends Component {
                 {/*<h1>{this.state.pageTitle}</h1>*/}
                 <h1>{ this.props.title }</h1>
 
-                <Counter />
+                <ClickedContext.Provider value={this.state.clicked}>
+                    <Counter />
+                </ClickedContext.Provider>
 
                 <hr/>
 
@@ -92,6 +97,9 @@ class App extends Component {
                     style={{ marginTop: 20 }}
                     onClick={ this.toggleTrackHandler }
                 >Toggle tracks</button>
+
+                <button onClick={() => this.setState({clicked: true})}>Change clicked</button>
+
                 <div
                     style={{
                         width: 400,
