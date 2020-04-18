@@ -10,9 +10,9 @@ class App extends Component {
 
         this.state = {
             tracks: [
-                {performer:'Mind Against', name:'Track_1'},
-                // {performer:'Tale of Us', name:'Track_1'},
-                // {performer:'Tale of Us', name:'Track_2'}
+                {performer:'Mind Against', name: 1},
+                {performer:'Tale of Us', name: 1},
+                {performer:'Tale of Us', name: 2}
             ],
             pageTitle: 'React components',
             showTracks: false
