@@ -10,9 +10,9 @@ class App extends Component {
 
         this.state = {
             tracks: [
-                {performer:'Mind Against', name: 1},
-                {performer:'Tale of Us', name: 1},
-                {performer:'Tale of Us', name: 2}
+                {performer:'Mind Against', name: 'Track 1'},
+                {performer:'Tale of Us', name: 'Track 1'},
+                {performer:'Tale of Us', name: 'Track 2'}
             ],
             pageTitle: 'React components',
             showTracks: false
@@ -70,6 +70,7 @@ class App extends Component {
                         <Track
                             performer={track.performer}
                             name={track.name}
+                            index={index}
                             onDelete={this.deleteHandler.bind(this, index)}
                             onChangeName={(event) => this.onChangeName(event.target.value, index)}
                         />
