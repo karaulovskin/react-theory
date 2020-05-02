@@ -15,7 +15,7 @@ class App extends Component {
                             <NavLink
                                 to="/"
                                 exact
-                                activeClassName={'wfm-active'}
+                                activeClassName={classes.Current}
                             >Home</NavLink>
                         </li>
                         <li>
@@ -29,9 +29,7 @@ class App extends Component {
                         <li>
                             <NavLink
                                 to={{
-                                    pathname: '/cars',
-                                    search: '?a=1&c=2',
-                                    hash: 'wfm-hash'
+                                    pathname: '/cars'
                                 }}
                             >Cars</NavLink>
                         </li>

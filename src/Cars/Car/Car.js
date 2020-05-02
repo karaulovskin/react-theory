@@ -3,6 +3,7 @@ import classes from './Car.module.scss'
 
 
 const Car = props => {
+    console.log(props)
     return (
         <div className={classes.Car}>
             <h3>Сar name: {props.name}</h3>

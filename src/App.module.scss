@@ -20,15 +20,9 @@
         list-style: none;
         li {
             margin-right: 15px;
-            a {
-                color: gray;
-            }
-            a.current {
-                color: red;
-            }
         }
     }
 }
-.wfm-active {
+.Current {
     color: red
 }
