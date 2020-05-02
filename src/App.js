@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import classes from './App.module.scss'
-import {Route, NavLink} from 'react-router-dom'
+import {Route, NavLink, Switch} from 'react-router-dom'
 import About from './About/About'
 import Cars from './Cars/Cars'
+import CardDetail from "./CardDetail/CardDetail";
 
 class App extends Component {
     render() {
@@ -38,10 +39,12 @@ class App extends Component {
 
                 <hr/>
 
-                <Route path="/" exact render={() => <h1>Home Page</h1>} />
-                <Route path="/about" component={About} />
-                <Route path="/cars" component={Cars} />
-
+                <Switch>
+                    <Route path="/" exact render={() => <h1>Home Page</h1>} />
+                    <Route path="/about" component={About} />
+                    <Route path="/cars/:name" component={CardDetail} />
+                    <Route path="/cars" component={Cars} />
+                </Switch>
             </div>
         );
     }
