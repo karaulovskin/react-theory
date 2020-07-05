@@ -1,117 +1,48 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import './App.scss';
-import Track from "./Track/Track";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
-import Counter from "./Counter/Counter";
-
-export const ClickedContext = React.createContext(false)
+import Counter3 from "./Counter3/Counter3";
+import {add, sub, addNumber, asyncAdd} from './redux/actions/actions'
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            clicked: false,
-            tracks: [
-                {performer:'Mind Against', name: 'Track 1'},
-                {performer:'Tale of Us', name: 'Track 1'},
-                {performer:'Tale of Us', name: 'Track 2'}
-            ],
-            pageTitle: 'React components',
-            showTracks: false
-        }
-    }
-
-    toggleTrackHandler = () => {
-        this.setState({
-            showTracks: !this.state.showTracks
-        })
-    }
-
-    onChangeName(name, index) {
-        const track = this.state.tracks[index]
-        track.name = name
-        const tracks = [...this.state.tracks]
-        tracks[index] = track
-
-        // короткая запись
-        // this.setState({tracks})
-
-        this.setState({
-            tracks: tracks
-        })
-    }
-
-    deleteHandler(index) {
-        const tracks = this.state.tracks.concat()
-        tracks.splice(index, 1)
-
-        this.setState({tracks})
-    }
-
-    componentWillMount() {
-        console.log('App componentWillMount')
-    }
-
-    componentDidMount() {
-        console.log('App componentDidMount')
-    }
 
     render() {
-        console.log('App render')
-
-        const divStyle = {
-            textAlign: 'center'
-        }
-
-        let tracks = null
-
-        if (this.state.showTracks) {
-            tracks = this.state.tracks.map((track, index) => {
-                return(
-                    <ErrorBoundary key={index}>
-                        <Track
-                            performer={track.performer}
-                            name={track.name}
-                            index={index}
-                            onDelete={this.deleteHandler.bind(this, index)}
-                            onChangeName={(event) => this.onChangeName(event.target.value, index)}
-                        />
-                    </ErrorBoundary>
-                )
-            })
-        }
-
         return (
-            <div style={divStyle}>
-                {/*<h1>{this.state.pageTitle}</h1>*/}
-                <h1>{ this.props.title }</h1>
-
-                <ClickedContext.Provider value={this.state.clicked}>
-                    <Counter />
-                </ClickedContext.Provider>
-
+            <div className={'App'}>
+                <h1>Счетчик <strong>{this.props.counter}</strong></h1>
                 <hr/>
-
-                <button
-                    style={{ marginTop: 20 }}
-                    onClick={ this.toggleTrackHandler }
-                >Toggle tracks</button>
-
-                <button onClick={() => this.setState({clicked: true})}>Change clicked</button>
-
-                <div
-                    style={{
-                        width: 400,
-                        margin: 'auto',
-                        padding: '20px'
-                    }}
-                >
-                    { tracks }
+                <div className="Actions">
+                    <button onClick={this.props.onAdd}>Добавить 1</button>
+                    <button onClick={this.props.onSub}>Вычесть 1</button>
                 </div>
+                <br/>
+                <div className="Actions">
+                    <button onClick={() => this.props.onAddNumber(15)}>Добавить 15</button>
+                    <button onClick={() => this.props.onAddNumber(-17)}>Вычесть 17</button>
+                </div>
+                <br/>
+                <div className="Actions">
+                    <button onClick={() => this.props.onAcyncAdd(100)}>Асинхронно добавлять 100</button>
+                </div>
+                <Counter3/>
             </div>
         );
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        counter: state.counter.counter
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onAdd: () => dispatch(add()),
+        onSub: () => dispatch(sub()),
+        onAddNumber: number => dispatch(addNumber(number)),
+        onAcyncAdd: number => dispatch(asyncAdd(number)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
